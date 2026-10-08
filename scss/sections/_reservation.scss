@@ -1,0 +1,78 @@
+@use "../base/variables" as *;
+
+.reservation {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding-block: clamp(2.75rem, 4vw, 3.5rem);
+  color: $color-bg;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(90deg, rgba($color-text, 0.62), rgba($color-text, 0.38) 60%, rgba($color-text, 0.18));
+  }
+}
+
+.reservation__bg {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 55%;
+}
+
+.reservation__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 2rem;
+}
+
+.reservation__tagline {
+  font-family: $font-display-en;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  line-height: 1.85;
+  letter-spacing: 0.24em;
+}
+
+.reservation__content {
+  display: grid;
+  justify-items: center;
+  text-align: center;
+}
+
+.reservation__title {
+  font-family: $font-display-en;
+  font-size: clamp(2.125rem, 3.2vw, 2.875rem);
+  line-height: 1.2;
+}
+
+.reservation__text {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  color: rgba($color-bg, 0.9);
+}
+
+.reservation .button {
+  margin-top: 1.25rem;
+}
+
+@media (max-width: $bp-mobile) {
+  .reservation {
+    padding-block: 4rem;
+  }
+
+  .reservation__inner {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .reservation__tagline {
+    display: none;
+  }
+}

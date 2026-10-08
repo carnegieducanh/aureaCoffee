@@ -1,0 +1,17 @@
+{
+  "name": "cafe-aurea",
+  "version": "1.0.0",
+  "private": true,
+  "description": "CAFÉ AUREA — landing page (HTML, SCSS, Vanilla JS)",
+  "scripts": {
+    "build": "sass scss/main.scss css/main.css --style=compressed --no-source-map",
+    "watch": "sass scss/main.scss css/main.css --watch",
+    "vendor": "node -e \"require('fs').copyFileSync('node_modules/scrollreveal/dist/scrollreveal.min.js', 'js/vendor/scrollreveal.min.js')\""
+  },
+  "devDependencies": {
+    "sass": "^1.105.1"
+  },
+  "dependencies": {
+    "scrollreveal": "4.0.9"
+  }
+}

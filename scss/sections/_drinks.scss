@@ -1,0 +1,139 @@
+@use "../base/variables" as *;
+
+.drinks {
+  padding-bottom: clamp(2.5rem, 4vw, 3.5rem);
+  background-color: $color-bg;
+}
+
+.drinks__header {
+  display: grid;
+  justify-items: center;
+  gap: 0.25rem;
+  text-align: center;
+}
+
+.drinks__lead {
+  font-size: 0.9375rem;
+  color: $color-text-muted;
+}
+
+.drinks__carousel {
+  position: relative;
+  margin-top: clamp(1.5rem, 2.5vw, 2.25rem);
+}
+
+.drinks__list {
+  display: flex;
+  gap: 2rem;
+  padding-block: 1rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.drinks__item {
+  flex: 0 0 calc((100% - 4 * 2rem) / 5);
+  min-width: 11rem;
+  scroll-snap-align: start;
+}
+
+.drinks__button {
+  position: absolute;
+  top: clamp(5rem, 8vw, 7.25rem);
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 1px solid $color-border;
+  border-radius: 50%;
+  background-color: $color-surface;
+  box-shadow: 0 4px 14px rgba($color-text, 0.08);
+  transform: translateY(-50%);
+  transition: background-color $duration-fast $ease-out, color $duration-fast $ease-out;
+
+  &:hover {
+    background-color: $color-text;
+    color: $color-bg;
+  }
+}
+
+.drinks__button--prev {
+  left: 1.25rem;
+}
+
+.drinks__button--next {
+  right: 1.25rem;
+}
+
+.drink-card {
+  display: grid;
+  justify-items: center;
+  text-align: center;
+}
+
+.drink-card__image {
+  width: 94%;
+  aspect-ratio: 480 / 415;
+  object-fit: contain;
+  filter: drop-shadow(0 0.75rem 1.125rem rgba($color-brown-dark, 0.14));
+  transition: transform $duration-slow $ease-out;
+
+  .drink-card:hover & {
+    transform: scale(1.05);
+  }
+}
+
+.drink-card__name {
+  margin-top: 1.5rem;
+  font-family: $font-display-en;
+  font-size: 1.5rem;
+  line-height: 1.2;
+}
+
+.drink-card__text {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.7;
+  color: $color-text-muted;
+}
+
+@media (max-width: $bp-tablet) {
+  .drinks__item {
+    flex-basis: 13rem;
+  }
+
+  .drinks__button {
+    top: 6.5rem;
+  }
+}
+
+@media (max-width: $bp-mobile) {
+  .drinks__list {
+    width: 100%;
+    gap: 1.25rem;
+    padding-inline: var(--gutter);
+    scroll-padding-inline: var(--gutter);
+  }
+
+  .drinks__item {
+    flex-basis: 58%;
+  }
+
+  .drinks__button {
+    top: 5.5rem;
+  }
+
+  .drinks__button--prev {
+    left: 0.5rem;
+  }
+
+  .drinks__button--next {
+    right: 0.5rem;
+  }
+}

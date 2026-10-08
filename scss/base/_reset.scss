@@ -1,0 +1,110 @@
+@use "variables" as *;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+:root {
+  --gutter: clamp(1.25rem, 4vw, 3rem);
+  // Distance from the container edge to the viewport edge, used for full-bleed images.
+  --bleed: max(var(--gutter), (100vw - #{$container-width}) / 2);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: $header-height;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100vh;
+  font-family: $font-body-ja;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: $color-text;
+  background-color: $color-bg;
+  word-break: auto-phrase;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+img {
+  height: auto;
+}
+
+input,
+button {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul[class] {
+  padding: 0;
+  list-style: none;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+:focus-visible {
+  outline: 2px solid $color-accent;
+  outline-offset: 3px;
+}
+
+.container {
+  width: min(100% - var(--gutter) * 2, #{$container-width});
+  margin-inline: auto;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.skip-link {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 100;
+  padding: 0.5rem 1rem;
+  border-radius: $radius-pill;
+  background-color: $color-text;
+  color: $color-bg;
+  transform: translateY(-200%);
+
+  &:focus-visible {
+    transform: none;
+  }
+}

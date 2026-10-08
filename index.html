@@ -1,0 +1,433 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CAFÉ AUREA | 一杯のコーヒーから、今日が少し好きになる。</title>
+  <meta name="description" content="一杯のコーヒーから、今日が少し好きになる。Café Aureaのシグネチャードリンク、季節のペストリー、ブランチプレートを、心地よい空間で。">
+  <meta name="theme-color" content="#faf3ea">
+  <link rel="icon" href="assets/icons/sunrise.webp" type="image/webp">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat&family=Cormorant+Garamond:wght@500;600&family=Noto+Serif+JP:wght@400;500&family=Zen+Old+Mincho:wght@500&display=swap">
+  <link rel="stylesheet" href="css/main.css">
+
+  <!-- Not deferred: it adds .sr to <html> before the body renders, so [data-reveal] content never flashes. -->
+  <script src="js/vendor/scrollreveal.min.js"></script>
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">本文へスキップ</a>
+
+  <header class="site-header">
+    <div class="site-header__inner container">
+      <a class="brand" href="#top" aria-label="Café Aurea ホーム">
+        <img class="brand__mark" src="assets/icons/sunrise.webp" alt="" width="160" height="101">
+        <span class="brand__sub">CAFÉ</span>
+        <span class="brand__name">AUREA</span>
+        <span class="brand__tagline">COFFEE · CULTURE · CONNECTION</span>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span class="visually-hidden">メニュー</span>
+        <span class="menu-toggle__icon" aria-hidden="true"></span>
+      </button>
+
+      <nav class="site-nav" id="site-nav" aria-label="メインメニュー">
+        <ul class="site-nav__list">
+          <li><a class="site-nav__link" href="#top" aria-current="true">ホーム</a></li>
+          <li><a class="site-nav__link" href="#menu">メニュー</a></li>
+          <li><a class="site-nav__link" href="#story">私たちの想い</a></li>
+          <li><a class="site-nav__link" href="#locations">店舗案内</a></li>
+          <li><a class="site-nav__link" href="#contact">お問い合わせ</a></li>
+        </ul>
+        <a class="button" href="#reservation">お席を予約する</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <img class="hero__bg" src="assets/images/coffee-flatlay.webp" alt="" width="1799" height="874">
+
+      <div class="hero__inner container">
+        <div class="hero__content">
+          <p class="hero__eyebrow">GOOD COFFEE<br>BRIGHTER DAYS</p>
+          <h1 class="hero__title" id="hero-title">Inside<br>The Cup</h1>
+          <p class="hero__lead">一杯のコーヒーから、<br>今日が少し好きになる。</p>
+          <a class="button" href="#menu">メニューを見る</a>
+        </div>
+
+        <div class="hero__visual">
+          <img class="hero__cup" src="assets/images/latte-art.webp" alt="リーフ模様のラテアートが描かれたカフェラテ" width="1100" height="958" fetchpriority="high">
+          <p class="hero__note hero__note--left" aria-hidden="true">A little good coffee<br>for a brighter<br>tomorrow.</p>
+          <p class="hero__note hero__note--right" aria-hidden="true">More<br>than<br>Coffee</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Our Signatures -->
+    <section class="drinks" id="signatures" aria-labelledby="drinks-title">
+      <header class="drinks__header container" data-reveal>
+        <p class="section-label">OUR SIGNATURES</p>
+        <h2 class="title-en" id="drinks-title">Drinks in Aurea</h2>
+        <p class="drinks__lead">今日の気分に寄り添う、とっておきの一杯。</p>
+      </header>
+
+      <div class="drinks__carousel" data-reveal>
+        <button class="drinks__button drinks__button--prev" type="button" aria-controls="drinks-list" data-direction="prev">
+          <span class="visually-hidden">前のドリンク</span>
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M14.5 6 8.5 12l6 6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+        </button>
+
+        <ul class="drinks__list container" id="drinks-list" tabindex="0" aria-label="シグネチャードリンク">
+          <li class="drinks__item">
+            <article class="drink-card">
+              <img class="drink-card__image" src="assets/images/cup-latte.webp" alt="ハートのラテアートが描かれたクラシックラテ" width="480" height="409" loading="lazy">
+              <h3 class="drink-card__name">Classic Latte</h3>
+              <p class="drink-card__text">ミルクのやさしさに、<br>ほっとする一杯。</p>
+            </article>
+          </li>
+          <li class="drinks__item">
+            <article class="drink-card">
+              <img class="drink-card__image" src="assets/images/cup-vanilla.webp" alt="ホイップクリームとナッツをのせたバニララテ" width="480" height="406" loading="lazy">
+              <h3 class="drink-card__name">Vanilla Orbit</h3>
+              <p class="drink-card__text">バニラがふわり。<br>甘くやさしい余韻。</p>
+            </article>
+          </li>
+          <li class="drinks__item">
+            <article class="drink-card">
+              <img class="drink-card__image" src="assets/images/cup-mocha.webp" alt="チョコレートをたっぷりのせたモカ" width="480" height="412" loading="lazy">
+              <h3 class="drink-card__name">Mocha Moon</h3>
+              <p class="drink-card__text">カカオの深いコクを、<br>ゆっくりと。</p>
+            </article>
+          </li>
+          <li class="drinks__item">
+            <article class="drink-card">
+              <img class="drink-card__image" src="assets/images/cup-matcha.webp" alt="ラテアートが描かれた抹茶ラテ" width="480" height="419" loading="lazy">
+              <h3 class="drink-card__name">Matcha Rise</h3>
+              <p class="drink-card__text">抹茶の香りと、<br>穏やかなひととき。</p>
+            </article>
+          </li>
+          <li class="drinks__item">
+            <article class="drink-card">
+              <img class="drink-card__image" src="assets/images/cup-caramel.webp" alt="キャラメルソースをかけたキャラメルラテ" width="480" height="426" loading="lazy">
+              <h3 class="drink-card__name">Caramel Eclipse</h3>
+              <p class="drink-card__text">香ばしさと甘さが重なる、<br>贅沢な味わい。</p>
+            </article>
+          </li>
+        </ul>
+
+        <button class="drinks__button drinks__button--next" type="button" aria-controls="drinks-list" data-direction="next">
+          <span class="visually-hidden">次のドリンク</span>
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="m9.5 6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- Our Story -->
+    <section class="story" id="story" aria-labelledby="story-title">
+      <img class="story__decor" src="assets/images/coffee-branch.webp" alt="" width="520" height="534" loading="lazy">
+
+      <div class="story__intro container">
+        <div class="story__content">
+          <p class="section-label" data-reveal>OUR STORY</p>
+          <h2 class="title-ja" id="story-title" data-reveal>一杯に、<br>日々の物語と<br><span class="text-accent">ぬくもりを。</span></h2>
+          <p class="lead" data-reveal>何気ない時間が、かけがえのない思い出に。<br>Aureaで生まれる、小さな物語。</p>
+          <a class="button" href="#our-world" data-reveal>私たちの想い</a>
+        </div>
+
+        <div class="story__media" data-reveal>
+          <img class="story__image" src="assets/images/notebook.webp" alt="窓辺の木のテーブルに置かれたコーヒーカップと開いたノート" width="1254" height="1254" loading="lazy">
+          <img class="badge story__badge" src="assets/images/badge.webp" alt="" width="460" height="457" loading="lazy">
+        </div>
+      </div>
+
+      <div class="story__cards container" id="our-world">
+        <article class="story-card story-card--guest" data-reveal>
+          <div class="story-card__body">
+            <img class="story-card__icon" src="assets/icons/cup.webp" alt="" width="120" height="79" loading="lazy">
+            <h3 class="story-card__title">GUEST STORIES</h3>
+            <figure class="story-card__quote">
+              <blockquote>
+                <p>Aureaに来ると、忙しい毎日をふっと忘れられるんです。</p>
+              </blockquote>
+              <figcaption>— MELISSA, DESIGNER</figcaption>
+            </figure>
+          </div>
+          <img class="story-card__image" src="assets/images/woman-sipping.webp" alt="窓辺の席でコーヒーを味わう女性" width="640" height="640" loading="lazy">
+        </article>
+
+        <article class="story-card story-card--counter" data-reveal>
+          <div class="story-card__body">
+            <img class="story-card__icon" src="assets/icons/laptop.webp" alt="" width="120" height="81" loading="lazy">
+            <h3 class="story-card__title">BEHIND THE<br>COUNTER</h3>
+            <p class="story-card__text">朝の仕込みから、一杯を届けるその瞬間まで。小さな手間にも、心を込めて。</p>
+          </div>
+          <img class="story-card__image" src="assets/images/pour-over.webp" alt="ハンドドリップでコーヒーを淹れる様子" width="640" height="640" loading="lazy">
+        </article>
+
+        <article class="story-card story-card--origins" data-reveal>
+          <div class="story-card__body">
+            <img class="story-card__icon" src="assets/icons/mountains.webp" alt="" width="120" height="47" loading="lazy">
+            <h3 class="story-card__title">COFFEE ORIGINS</h3>
+            <p class="story-card__text">一杯の向こうにある、産地とつくり手の物語。豆との出会いも、大切に。</p>
+            <p class="script-note">From farm<br>to your cup.</p>
+          </div>
+          <img class="story-card__decor" src="assets/images/dried-flowers.webp" alt="" width="480" height="659" loading="lazy">
+        </article>
+
+        <article class="story-card story-card--seasonal" data-reveal>
+          <div class="story-card__body">
+            <h3 class="story-card__title">SEASONAL NOTES</h3>
+            <p class="story-card__text">スパイスや柑橘の香りとともに、季節をゆっくり味わう時間を。</p>
+          </div>
+          <img class="story-card__image" src="assets/images/latte-autumn.webp" alt="ドライオレンジを添えた季節のラテ" width="1000" height="1000" loading="lazy">
+        </article>
+
+        <div class="story-card story-card--quote" data-reveal>
+          <figure class="story-card__body story-card__quote">
+            <blockquote>
+              <p>音楽も、さりげない気配りも。</p>
+              <p>ここに来ると、また帰ってきたくなるんです。</p>
+            </blockquote>
+            <figcaption>— JAMES, WRITER</figcaption>
+          </figure>
+          <img class="story-card__decor" src="assets/images/daisies.webp" alt="" width="480" height="541" loading="lazy">
+        </div>
+
+        <article class="glimpse" data-reveal>
+          <div class="story-card glimpse__intro">
+            <div class="story-card__body">
+              <h3 class="story-card__title">A GLIMPSE<br>OF OUR WORLD</h3>
+              <p class="story-card__text">やわらかな光と、心地よい空間。<br>コーヒーと物語のある場所。</p>
+            </div>
+            <img class="story-card__image" src="assets/images/entrance.webp" alt="植物が飾られたカフェの入口" width="640" height="640" loading="lazy">
+          </div>
+          <ul class="glimpse__gallery">
+            <li><img src="assets/images/window-seat.webp" alt="窓から光が差し込む店内の席" width="640" height="640" loading="lazy"></li>
+            <li><img src="assets/images/cafe-table.webp" alt="クロワッサンとラテが置かれたテーブル" width="640" height="640" loading="lazy"></li>
+            <li><img src="assets/images/latte-wood.webp" alt="木のテーブルに置かれたラテ" width="640" height="640" loading="lazy"></li>
+            <li><img src="assets/images/counter.webp" alt="焼き菓子が並ぶショーケースと店内" width="640" height="640" loading="lazy"></li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- Menu -->
+    <section class="menu" id="menu" aria-labelledby="menu-title">
+      <img class="menu__decor" src="assets/images/eucalyptus.webp" alt="" width="480" height="668" loading="lazy">
+
+      <div class="menu__intro container">
+        <div class="menu__content">
+          <div class="brand" aria-hidden="true" data-reveal>
+            <img class="brand__mark" src="assets/icons/sunrise.webp" alt="" width="160" height="101" loading="lazy">
+            <span class="brand__sub">CAFÉ</span>
+            <span class="brand__name">AUREA</span>
+            <span class="brand__tagline">COFFEE. ART. SOUL.</span>
+          </div>
+          <h2 class="title-ja" id="menu-title" data-reveal>朝を、<br>ゆっくり味わう。<br><span class="text-accent">そんな贅沢を。</span></h2>
+          <p class="lead menu__lead" data-reveal>素材を大切に。<br>ひと皿に、ひと工夫。<br>今日も、心地よい時間を。</p>
+        </div>
+
+        <div class="menu__media" data-reveal>
+          <img class="menu__image" src="assets/images/latte-spoon.webp" alt="木漏れ日が差すテーブルに置かれたラテとソーサー" width="1254" height="1254" loading="lazy">
+          <img class="badge menu__badge" src="assets/images/badge.webp" alt="" width="460" height="457" loading="lazy">
+        </div>
+      </div>
+
+      <ul class="menu__list container">
+        <li class="menu__item" data-reveal>
+          <article class="menu-card">
+            <img class="menu-card__icon" src="assets/icons/cup.webp" alt="" width="120" height="79" loading="lazy">
+            <h3 class="menu-card__title">シグネチャーコーヒー</h3>
+            <div class="menu-card__media">
+              <img src="assets/images/iced-latte.webp" alt="グラスに注がれたアイスカフェラテ" width="600" height="600" loading="lazy">
+            </div>
+            <p class="menu-card__text">丁寧に淹れた一杯と、<br>Aureaならではの味わいを。</p>
+          </article>
+        </li>
+        <li class="menu__item" data-reveal>
+          <article class="menu-card">
+            <img class="menu-card__icon" src="assets/icons/croissant.webp" alt="" width="120" height="89" loading="lazy">
+            <h3 class="menu-card__title">季節のペストリー</h3>
+            <div class="menu-card__media">
+              <img src="assets/images/berry-danish.webp" alt="ベリーとクリームをのせたデニッシュ" width="600" height="600" loading="lazy">
+            </div>
+            <p class="menu-card__text">季節の素材を使った、<br>彩り豊かな焼き菓子を。</p>
+          </article>
+        </li>
+        <li class="menu__item" data-reveal>
+          <article class="menu-card">
+            <img class="menu-card__icon" src="assets/icons/plate.webp" alt="" width="120" height="116" loading="lazy">
+            <h3 class="menu-card__title">ブランチプレート</h3>
+            <div class="menu-card__media">
+              <img src="assets/images/avocado-toast.webp" alt="ポーチドエッグとアボカドのオープンサンド" width="600" height="600" loading="lazy">
+            </div>
+            <p class="menu-card__text">彩り豊かなひと皿で、<br>心満たされる朝を。</p>
+          </article>
+        </li>
+        <li class="menu__item" data-reveal>
+          <article class="menu-card">
+            <img class="menu-card__icon" src="assets/icons/cloche.webp" alt="" width="120" height="76" loading="lazy">
+            <h3 class="menu-card__title">シェフのおすすめ</h3>
+            <div class="menu-card__media">
+              <img src="assets/images/chocolate-cake.webp" alt="チョコレートムースケーキ" width="600" height="600" loading="lazy">
+            </div>
+            <p class="menu-card__text">季節の恵みを生かした、<br>シェフこだわりの一品。</p>
+          </article>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Moments / Locations -->
+    <section class="moments" id="locations" aria-labelledby="moments-title">
+      <img class="moments__decor" src="assets/images/coffee-cherries.webp" alt="" width="520" height="525" loading="lazy">
+
+      <div class="moments__intro container">
+        <div class="moments__content">
+          <h2 class="title-ja" id="moments-title" data-reveal>もう少し、<br><span class="text-accent">ここにいたくなる。</span></h2>
+          <p class="lead" data-reveal>ひとりの時間も、誰かと過ごす時間も。<br>思い思いのひとときを、Aureaで。</p>
+          <!-- TODO: link to the store locator page once it exists -->
+          <a class="button" href="#contact" data-reveal>店舗を探す</a>
+        </div>
+
+        <div class="moments__media" data-reveal>
+          <img class="moments__image" src="assets/images/barista.webp" alt="エスプレッソマシンでコーヒーを抽出するバリスタ" width="1100" height="1100" loading="lazy">
+        </div>
+
+        <div class="moments__aside" aria-hidden="true">
+          <img class="moments__flowers" src="assets/images/dried-flowers.webp" alt="" width="480" height="659" loading="lazy">
+          <div class="brand">
+            <img class="brand__mark" src="assets/icons/sunrise.webp" alt="" width="160" height="101" loading="lazy">
+            <span class="brand__sub">CAFÉ</span>
+            <span class="brand__name">AUREA</span>
+            <span class="brand__tagline">COFFEE. ART. SOUL.</span>
+          </div>
+          <p class="script-note moments__note">Good Coffee<br>Good Food<br>Brighter People.</p>
+          <img class="moments__daisies" src="assets/images/daisies.webp" alt="" width="480" height="541" loading="lazy">
+        </div>
+      </div>
+
+      <div class="moments__band">
+        <ul class="moments__list container">
+          <li data-reveal>
+            <article class="moment-card">
+              <img class="moment-card__image" src="assets/images/croissant.webp" alt="皿にのった焼きたてのクロワッサン" width="480" height="480" loading="lazy">
+              <div class="moment-card__body">
+                <img class="moment-card__icon" src="assets/icons/cup.webp" alt="" width="120" height="79" loading="lazy">
+                <h3 class="moment-card__title">コーヒーと焼き菓子</h3>
+                <p class="moment-card__text">香り豊かな一杯と、<br>甘いひと口。<br>自分への小さなご褒美に。</p>
+              </div>
+            </article>
+          </li>
+          <li data-reveal>
+            <article class="moment-card">
+              <img class="moment-card__image" src="assets/images/laptop-work.webp" alt="ノートパソコンを開いてくつろぐ女性" width="480" height="480" loading="lazy">
+              <div class="moment-card__body">
+                <img class="moment-card__icon" src="assets/icons/laptop.webp" alt="" width="120" height="81" loading="lazy">
+                <h3 class="moment-card__title">仕事と、ひと休み</h3>
+                <p class="moment-card__text">少し集中したい日も、<br>ゆっくりしたい日も。<br>自分のペースで、心地よく。</p>
+              </div>
+            </article>
+          </li>
+          <li data-reveal>
+            <article class="moment-card">
+              <img class="moment-card__image" src="assets/images/couple.webp" alt="ブランチを囲んで会話を楽しむ二人" width="480" height="480" loading="lazy">
+              <div class="moment-card__body">
+                <img class="moment-card__icon" src="assets/icons/conversation.webp" alt="" width="120" height="74" loading="lazy">
+                <h3 class="moment-card__title">ブランチと会話</h3>
+                <p class="moment-card__text">おいしい料理を囲んで、<br>会話がはずむひとときを。</p>
+              </div>
+            </article>
+          </li>
+          <li data-reveal>
+            <article class="moment-card">
+              <img class="moment-card__image" src="assets/images/latte-sunset.webp" alt="夕日が差し込む窓辺のラテ" width="480" height="480" loading="lazy">
+              <div class="moment-card__body">
+                <img class="moment-card__icon" src="assets/icons/sun.webp" alt="" width="120" height="120" loading="lazy">
+                <h3 class="moment-card__title">夕暮れのコーヒー</h3>
+                <p class="moment-card__text">光がやわらぐ夕方は、<br>もう少しだけ、ゆっくりと。</p>
+              </div>
+            </article>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Reservation -->
+    <section class="reservation" id="reservation" aria-labelledby="reservation-title">
+      <img class="reservation__bg" src="assets/images/sunlit-cafe.webp" alt="" width="1920" height="640" loading="lazy">
+
+      <div class="reservation__inner container">
+        <p class="reservation__tagline">GOOD COFFEE<br>GOOD PEOPLE<br>BRIGHTER DAYS</p>
+        <div class="reservation__content" data-reveal>
+          <h2 class="reservation__title" id="reservation-title">Reserve Your Table</h2>
+          <p class="reservation__text">大切な人と、おいしい時間を。</p>
+          <!-- TODO: replace with the booking page URL once available -->
+          <a class="button button--light" href="#contact">お席を予約する</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="contact">
+    <div class="container">
+      <div class="site-footer__top">
+        <a class="brand brand--inline" href="#top" aria-label="Café Aurea ホーム">
+          <img class="brand__mark" src="assets/icons/sunrise.webp" alt="" width="160" height="101" loading="lazy">
+          <span class="brand__name">CAFÉ AUREA</span>
+          <span class="brand__tagline">COFFEE · CULTURE · CONNECTION</span>
+        </a>
+
+        <nav class="footer-nav" aria-label="フッターメニュー">
+          <ul class="footer-nav__list">
+            <li><a href="#top">ホーム</a></li>
+            <li><a href="#menu">メニュー</a></li>
+            <li><a href="#story">私たちの想い</a></li>
+            <li><a href="#locations">店舗案内</a></li>
+            <li><a href="#contact">お問い合わせ</a></li>
+          </ul>
+        </nav>
+
+        <!-- TODO: replace with the official account URLs -->
+        <ul class="social-links">
+          <li>
+            <a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M24 12.07C24 5.44 18.63.07 12 .07S0 5.44 0 12.07c0 5.99 4.39 10.95 10.13 11.85v-8.38H7.08v-3.47h3.05V9.43c0-3.01 1.79-4.67 4.53-4.67 1.31 0 2.69.24 2.69.24v2.95h-1.51c-1.49 0-1.96.93-1.96 1.87v2.25h3.33l-.53 3.47h-2.8v8.38C19.61 23.02 24 18.06 24 12.07z"/></svg>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="0.6" fill="currentColor"/></svg>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.youtube.com/" target="_blank" rel="noopener" aria-label="YouTube">
+              <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="M23.5 6.5a3 3 0 0 0-2.1-2.1C19.5 3.9 12 3.9 12 3.9s-7.5 0-9.4.5A3 3 0 0 0 .5 6.5 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.5 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.5zM9.6 15.4V8.6l6.2 3.4-6.2 3.4z"/></svg>
+            </a>
+          </li>
+        </ul>
+
+        <!-- TODO: set the form action to the newsletter service endpoint -->
+        <form class="newsletter">
+          <label for="newsletter-email">Aureaからのお便り</label>
+          <div class="newsletter__field">
+            <input class="newsletter__input" id="newsletter-email" type="email" name="email" placeholder="メールアドレスを入力" autocomplete="email" required>
+            <button class="newsletter__submit" type="submit">
+              <span class="visually-hidden">登録する</span>
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <div class="site-footer__bottom">
+        <p><small>© 2026 Café Aurea. All rights reserved.</small></p>
+        <p class="site-footer__tagline">SAME GOOD ENERGY. DIFFERENT DAY.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

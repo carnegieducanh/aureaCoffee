@@ -1,0 +1,41 @@
+@use "variables" as *;
+
+.section-label {
+  font-family: $font-display-en;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  line-height: 1.6;
+  letter-spacing: 0.24em;
+  color: $color-text-muted;
+}
+
+.title-en {
+  font-family: $font-display-en;
+  font-size: clamp(2.25rem, 1.6rem + 1.8vw, 3.125rem);
+  line-height: 1.15;
+}
+
+.title-ja {
+  font-family: $font-display-ja;
+  font-size: clamp(1.75rem, 3.9vw, 3.5rem);
+  line-height: 1.55;
+  letter-spacing: 0.04em;
+  font-feature-settings: "palt";
+}
+
+.text-accent {
+  color: $color-accent;
+}
+
+.lead {
+  font-size: clamp(0.9375rem, 0.875rem + 0.25vw, 1.0625rem);
+  line-height: 2;
+  color: $color-text-muted;
+}
+
+.script-note {
+  font-family: $font-script;
+  font-size: 1.375rem;
+  line-height: 1.25;
+  color: $color-brown-dark;
+}

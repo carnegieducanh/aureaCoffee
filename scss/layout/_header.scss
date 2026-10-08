@@ -1,0 +1,188 @@
+@use "../base/variables" as *;
+
+.site-header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 50;
+
+  // Background lives on a pseudo-element: backdrop-filter on the header itself
+  // would trap the fixed mobile menu inside the header box.
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: rgba($color-bg, 0.88);
+    box-shadow: 0 1px 0 rgba($color-border, 0.7);
+    backdrop-filter: blur(12px);
+    opacity: 0;
+    transition: opacity 0.4s $ease-out;
+  }
+
+  &.is-scrolled::before {
+    opacity: 1;
+  }
+}
+
+.site-header__inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  min-height: $header-height;
+  padding-block: 0.625rem;
+}
+
+.site-nav {
+  display: flex;
+  flex: 1;
+  align-items: center;
+}
+
+.site-nav__list {
+  display: flex;
+  gap: clamp(1.25rem, 2.6vw, 2.5rem);
+  margin-inline: auto;
+}
+
+.site-nav__link {
+  position: relative;
+  display: inline-block;
+  padding-block: 0.5rem;
+  font-size: 0.875rem;
+  letter-spacing: 0.06em;
+
+  &::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 0.25rem;
+    left: 0;
+    height: 1px;
+    background-color: currentColor;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s $ease-out;
+  }
+
+  &:hover::after,
+  &[aria-current]::after {
+    transform: scaleX(1);
+  }
+}
+
+.menu-toggle {
+  display: none;
+}
+
+@media (max-width: $bp-nav) {
+  .site-header__inner {
+    justify-content: space-between;
+    min-height: 4.5rem;
+  }
+
+  .site-header .brand {
+    position: relative;
+    z-index: 2;
+
+    .brand__mark {
+      width: 1.25rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .brand__name {
+      font-size: 1.5rem;
+    }
+
+    .brand__tagline {
+      display: none;
+    }
+  }
+
+  .menu-toggle {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 50%;
+    background-color: rgba($color-bg, 0.9);
+    box-shadow: 0 2px 12px rgba($color-text, 0.1);
+  }
+
+  .menu-toggle__icon,
+  .menu-toggle__icon::before,
+  .menu-toggle__icon::after {
+    display: block;
+    width: 1.5rem;
+    height: 1px;
+    background-color: currentColor;
+    transition: transform 0.3s $ease-out, background-color 0.3s $ease-out;
+  }
+
+  .menu-toggle__icon {
+    position: relative;
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+    }
+
+    &::before {
+      transform: translateY(-0.4375rem);
+    }
+
+    &::after {
+      transform: translateY(0.4375rem);
+    }
+  }
+
+  .menu-toggle[aria-expanded="true"] .menu-toggle__icon {
+    background-color: transparent;
+
+    &::before {
+      transform: rotate(45deg);
+    }
+
+    &::after {
+      transform: rotate(-45deg);
+    }
+  }
+
+  .site-nav {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2.5rem;
+    background-color: $color-bg;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s $ease-out, visibility 0s linear 0.4s;
+  }
+
+  .menu-toggle[aria-expanded="true"] + .site-nav {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.4s $ease-out;
+  }
+
+  .site-nav__list {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+    margin-inline: 0;
+  }
+
+  .site-nav__link {
+    font-family: $font-display-ja;
+    font-size: 1.25rem;
+  }
+
+  body.is-nav-open {
+    overflow: hidden;
+  }
+}

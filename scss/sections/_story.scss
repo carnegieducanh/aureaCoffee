@@ -1,0 +1,356 @@
+@use "../base/variables" as *;
+
+.story {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding-bottom: 1.5rem;
+  background-color: $color-bg-alt;
+
+  // Cream curve flowing down from the drinks section.
+  &::before {
+    content: "";
+    position: absolute;
+    top: -6rem;
+    left: -12%;
+    z-index: 1;
+    width: 124%;
+    height: 10.5rem;
+    border-radius: 50%;
+    background-color: $color-bg;
+  }
+}
+
+.story__decor {
+  position: absolute;
+  top: 6.5rem;
+  left: -4.5rem;
+  width: clamp(7rem, 13vw, 12rem);
+  transform: rotate(-65deg);
+  pointer-events: none;
+}
+
+.story__intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+}
+
+.story__content {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  justify-items: start;
+  align-content: start;
+  padding: 6rem 0 0 clamp(0rem, 7.5vw, 6.75rem);
+
+  .title-ja {
+    margin-top: 1.25rem;
+  }
+
+  .lead {
+    margin-top: 1.75rem;
+  }
+
+  .button {
+    margin-top: 1.75rem;
+  }
+}
+
+.story__media {
+  position: relative;
+  margin-top: 2rem;
+  margin-right: calc(var(--bleed) * -1);
+}
+
+.story__image {
+  width: 100%;
+  height: clamp(18rem, 32vw, 29rem);
+  object-fit: cover;
+  object-position: 50% 65%;
+  border-radius: 28% 0 0 42% / 46% 0 0 26%;
+}
+
+.story__badge {
+  top: 79%;
+  left: 0;
+  width: clamp(6.5rem, 15vw, 13.75rem);
+  transform: translate(-40%, -50%);
+}
+
+// Editorial cards: 12-column asymmetric grid on desktop.
+.story__cards {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 1.5rem;
+  margin-top: 2.25rem;
+}
+
+.story-card {
+  display: grid;
+  grid-column: span 4;
+  grid-template-columns: minmax(0, 1fr) 44%;
+  min-height: 15rem;
+  overflow: hidden;
+  border: 1px solid rgba($color-border, 0.6);
+  border-radius: $radius-card;
+  background-color: $color-surface;
+}
+
+.story-card__body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.625rem;
+  padding: 1.5rem;
+}
+
+.story-card__icon {
+  width: auto;
+  height: 1.5rem;
+  margin-bottom: 0.875rem;
+}
+
+.story-card__title {
+  font-family: $font-display-en;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0.16em;
+}
+
+.story-card__text {
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.85;
+  color: $color-text-muted;
+}
+
+// Fill the card without letting the square source images dictate the row height.
+.story-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  aspect-ratio: auto;
+  contain: size;
+  transition: transform $duration-slow $ease-out;
+
+  .story-card:hover & {
+    transform: scale(1.04);
+  }
+}
+
+.story-card__decor {
+  width: 100%;
+  height: 100%;
+  padding: 0.75rem 0.5rem;
+  object-fit: contain;
+  aspect-ratio: auto;
+  contain: size;
+}
+
+.story-card__quote {
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.85;
+  color: $color-text-muted;
+
+  blockquote::before {
+    content: "“";
+    display: block;
+    height: 1.25rem;
+    font-family: $font-display-en;
+    font-size: 2.25rem;
+    line-height: 1;
+    color: $color-text;
+  }
+
+  figcaption {
+    margin-top: 0.875rem;
+    font-family: $font-display-en;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+  }
+}
+
+.story-card--guest .story-card__image {
+  border-radius: 4.5rem 0 0 2.5rem;
+}
+
+.story-card--counter {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border: 0;
+  background-color: $color-brown;
+  color: $color-bg;
+
+  .story-card__icon {
+    filter: brightness(0) invert(1);
+    opacity: 0.75;
+  }
+
+  .story-card__text {
+    color: rgba($color-bg, 0.85);
+  }
+}
+
+.story-card--origins {
+  grid-template-columns: minmax(0, 1fr) 40%;
+
+  .script-note {
+    margin-top: auto;
+  }
+}
+
+.story-card--seasonal {
+  grid-column: span 7;
+  grid-template-columns: 29% minmax(0, 1fr);
+  min-height: 12.5rem;
+  border: 0;
+  background-color: $color-accent;
+  color: $color-bg;
+
+  .story-card__body {
+    justify-content: center;
+  }
+
+  .story-card__text {
+    color: rgba($color-bg, 0.9);
+  }
+}
+
+.story-card--quote {
+  grid-column: span 5;
+  grid-template-columns: minmax(0, 1fr) 38%;
+  min-height: 12.5rem;
+
+  .story-card__body {
+    justify-content: center;
+    gap: 0;
+  }
+}
+
+.glimpse {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: 2fr repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.glimpse__intro {
+  grid-column: span 1;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  min-height: 9.5rem;
+
+  .story-card__body {
+    justify-content: center;
+    padding-block: 1rem;
+  }
+}
+
+.glimpse__gallery {
+  display: grid;
+  grid-column: span 4;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+
+  li {
+    overflow: hidden;
+    border-radius: 0.75rem;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    min-height: 9.5rem;
+    object-fit: cover;
+    aspect-ratio: auto;
+    contain: size;
+    transition: transform $duration-slow $ease-out;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+}
+
+@media (max-width: $bp-laptop) {
+  .story-card__body {
+    padding: 1.25rem;
+  }
+
+  .story__cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .story-card {
+    grid-column: span 1;
+  }
+
+  .story-card--seasonal {
+    grid-column: span 1;
+    grid-template-columns: 44% minmax(0, 1fr);
+  }
+
+  .story-card--quote {
+    grid-column: 1 / -1;
+  }
+
+  .glimpse {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .glimpse__intro {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: $bp-tablet) {
+  .story__content {
+    padding-top: 5rem;
+  }
+}
+
+@media (max-width: $bp-mobile) {
+  .story__decor {
+    top: 3rem;
+    left: auto;
+    right: -2.5rem;
+    width: 6.5rem;
+  }
+
+  .story__intro {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 2.5rem;
+  }
+
+  .story__content {
+    padding: 4.5rem 0 0;
+  }
+
+  .story__media {
+    margin-left: 1.5rem;
+  }
+
+  .story__image {
+    height: 17rem;
+  }
+
+  .story__cards {
+    grid-template-columns: minmax(0, 1fr);
+    margin-top: 3rem;
+  }
+
+  .story-card {
+    min-height: 13rem;
+  }
+
+  .glimpse {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .glimpse__gallery {
+    grid-column: 1 / -1;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

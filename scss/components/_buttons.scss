@@ -1,0 +1,44 @@
+@use "../base/variables" as *;
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.875rem;
+  min-height: 2.75rem;
+  padding: 0.5rem 1.5rem;
+  border-radius: $radius-pill;
+  background-color: $color-text;
+  color: $color-bg;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+  transition: background-color $duration-fast $ease-out, color $duration-fast $ease-out;
+
+  &::after {
+    content: "";
+    width: 0.875rem;
+    height: 0.625rem;
+    background-color: currentColor;
+    -webkit-mask: $icon-arrow no-repeat center / contain;
+    mask: $icon-arrow no-repeat center / contain;
+    transition: transform $duration-fast $ease-out;
+  }
+
+  &:hover {
+    background-color: $color-brown-dark;
+  }
+
+  &:hover::after {
+    transform: translateX(0.25rem);
+  }
+}
+
+.button--light {
+  background-color: $color-bg;
+  color: $color-text;
+
+  &:hover {
+    background-color: $color-bg-alt;
+  }
+}
