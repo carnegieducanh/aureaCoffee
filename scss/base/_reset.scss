@@ -17,8 +17,9 @@
   --bleed: max(var(--gutter), (100vw - #{$container-width}) / 2);
 }
 
+// No scroll-behavior: smooth, it fights Lenis (initSmoothScroll in js/main.js). Lenis reads
+// scroll-padding-top too, so in-page links stop below the fixed header.
 html {
-  scroll-behavior: smooth;
   scroll-padding-top: calc(#{$header-height} + #{$safe-top});
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;

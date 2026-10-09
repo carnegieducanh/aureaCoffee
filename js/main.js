@@ -1,3 +1,34 @@
+// Smooth wheel scrolling for the whole page (touch scrolling stays native), and in-page links
+// that glide to their section instead of jumping.
+function initSmoothScroll() {
+  if (typeof Lenis !== 'function') return null;
+
+  const lenis = new Lenis({
+    duration: 1.4,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    smoothWheel: true,
+    wheelMultiplier: 0.9,
+    // Windows reports reduced motion whenever "Animation effects" is off.
+    respectReducedMotion: false,
+  });
+
+  requestAnimationFrame(function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  });
+
+  // Not Lenis's `anchors` option: it doesn't cancel the click, so the browser jumps there first.
+  // The skip link keeps the native jump, which also moves keyboard focus into <main>.
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest('a[href^="#"]:not(.skip-link)');
+    if (!link) return;
+    event.preventDefault();
+    lenis.scrollTo(link.getAttribute('href'), { duration: 1.2 });
+  });
+
+  return lenis;
+}
+
 function initHeader() {
   const header = document.querySelector('.site-header');
   const SCROLL_OFFSET = 40;
@@ -8,7 +39,7 @@ function initHeader() {
   update();
 }
 
-function initMobileNav() {
+function initMobileNav(lenis) {
   const toggle = document.querySelector('.menu-toggle');
   const nav = document.getElementById('site-nav');
   const pageRegions = document.querySelectorAll('main, .site-footer');
@@ -22,10 +53,17 @@ function initMobileNav() {
     pageRegions.forEach((region) => {
       region.inert = open;
     });
+    // Lenis scrolls the page itself, so the overflow lock on <body> doesn't stop it.
+    if (open) {
+      lenis?.stop();
+    } else {
+      lenis?.start();
+    }
   }
 
   toggle.addEventListener('click', () => setOpen(!isOpen()));
 
+  // Runs before the link's smooth scroll (handled on document), so Lenis is running again by then.
   nav.addEventListener('click', (event) => {
     if (event.target.closest('a')) setOpen(false);
   });
@@ -190,8 +228,9 @@ function initActiveNavLink() {
   });
 }
 
+const lenis = initSmoothScroll();
 initHeader();
-initMobileNav();
+initMobileNav(lenis);
 initThemeToggle();
 initDrinksCarousel();
 initScrollReveal();

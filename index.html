@@ -11,6 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat&family=Cormorant+Garamond:wght@500;600&family=Noto+Serif+JP:wght@400;500&family=Zen+Old+Mincho:wght@500&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.css">
   <link rel="stylesheet" href="css/main.css">
 
   <!-- Inline so the saved (or system) theme is set before the page paints. -->
@@ -22,6 +23,7 @@
 
   <!-- Not deferred: it adds .sr to <html> before the body renders, so [data-reveal] content never flashes. -->
   <script src="js/vendor/scrollreveal.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js" defer></script>
   <script src="js/main.js" defer></script>
 </head>
 <body>
@@ -94,7 +96,8 @@
           <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M14.5 6 8.5 12l6 6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
         </button>
 
-        <ul class="drinks__list container" id="drinks-list" tabindex="0" aria-label="シグネチャードリンク">
+        <!-- data-lenis-prevent-horizontal: sideways swipes scroll the list natively, the wheel still scrolls the page. -->
+        <ul class="drinks__list container" id="drinks-list" tabindex="0" aria-label="シグネチャードリンク" data-lenis-prevent-horizontal>
           <li class="drinks__item">
             <article class="drink-card">
               <img class="drink-card__image" src="assets/images/cup-latte.webp" alt="ハートのラテアートが描かれたクラシックラテ" width="480" height="409" loading="lazy">

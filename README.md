@@ -1,6 +1,6 @@
 # CAFÉ AUREA — Landing Page
 
-Landing page cho thương hiệu café CAFÉ AUREA, xây dựng bằng **HTML5 + SCSS + Vanilla JavaScript** (không framework). Thư viện runtime duy nhất là [ScrollReveal](https://scrollrevealjs.org/) cho hiệu ứng hiện nội dung khi cuộn.
+Landing page cho thương hiệu café CAFÉ AUREA, xây dựng bằng **HTML5 + SCSS + Vanilla JavaScript** (không framework). Thư viện runtime: [ScrollReveal](https://scrollrevealjs.org/) cho hiệu ứng hiện nội dung khi cuộn, [Lenis](https://lenis.darkroom.engineering/) cho cuộn mượt (nạp từ CDN jsDelivr).
 
 ## Chạy dự án
 
@@ -18,7 +18,7 @@ Sau đó mở `index.html` trực tiếp trên trình duyệt, hoặc dùng exte
 ```text
 index.html                 Toàn bộ markup (semantic HTML)
 css/main.css               CSS đã compile — không sửa trực tiếp
-js/main.js                 Header, mobile menu, theme toggle, carousel, scroll reveal, active nav link
+js/main.js                 Smooth scroll, header, mobile menu, theme toggle, carousel, scroll reveal, active nav link
 js/vendor/                 ScrollReveal đã build sẵn — không sửa trực tiếp
 scss/
   main.scss                Điểm vào, @use các partial
@@ -41,6 +41,10 @@ assets/
 
 ## Hiệu ứng khi cuộn
 
+- Cuộn mượt bằng Lenis, cấu hình trong `initSmoothScroll()` ở `js/main.js` (`duration`, `wheelMultiplier`). Chỉ con lăn chuột được làm mượt, cuộn cảm ứng vẫn là native. Version Lenis ghi cứng trong 2 URL CDN ở `<head>` của `index.html`: nâng version thì sửa cả hai.
+- Link neo `#...` cuộn mượt tới section và dừng dưới header nhờ `scroll-padding-top` trên `<html>` (`_reset.scss`). Không thêm lại `scroll-behavior: smooth` vì nó xung đột với Lenis. Skip link vẫn nhảy native để focus bàn phím vào `<main>`.
+- Menu mobile mở thì gọi `lenis.stop()`, đóng thì `lenis.start()`: Lenis tự cuộn trang nên `overflow: hidden` trên `<body>` không chặn được nó.
+- Phần tử có thanh cuộn riêng phải gắn `data-lenis-prevent` (hoặc `data-lenis-prevent-horizontal` nếu chỉ cuộn ngang như `.drinks__list`), nếu không Lenis sẽ chặn thao tác cuộn bên trong.
 - Gắn `data-reveal` vào phần tử cần hiện khi cuộn tới. Các phần tử `data-reveal` **cùng cha** tạo thành một chuỗi và hiện lần lượt, cách nhau 120ms (cấu hình trong `initScrollReveal()` ở `js/main.js`).
 - Không gắn `data-reveal` cho từng `.drinks__item`: hàng đồ uống cuộn ngang, ScrollReveal chỉ đo theo trang nên thẻ nằm ngoài khung sẽ bị ẩn mãi. Gắn cho cả `.drinks__carousel`.
 - `scrollreveal.min.js` được nạp trong `<head>` (không `defer`) để class `.sr` có trên `<html>` trước khi trang hiển thị; CSS dùng class này để ẩn sẵn `[data-reveal]`, tránh nội dung nháy lên rồi biến mất. Nếu file không tải được thì nội dung vẫn hiện bình thường.
