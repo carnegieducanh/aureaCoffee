@@ -11,7 +11,8 @@
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  padding-block: calc(3.75rem + #{$safe-top}) 2.5rem;
+  // Starts below the fixed header, so the cup clears the nav.
+  padding-block: calc(#{$header-height} + #{$safe-top}) 2.5rem;
 
   // Cream arch rising into the drinks section.
   &::after {
