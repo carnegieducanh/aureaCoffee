@@ -63,29 +63,72 @@ function initThemeToggle() {
   });
 }
 
-// Rotates the list so the carousel loops, then slides the cards into their new slots.
+// Rotates the list so the carousel loops, then slides every card from where it is on screen
+// into its new slot. The card that wraps around leaves through a copy of itself, so it slides
+// out of view on one side while it slides back in on the other.
 function initDrinksCarousel() {
   const list = document.getElementById('drinks-list');
   const buttons = document.querySelectorAll('.drinks__button');
-  const SLIDE_DURATION = 700;
+  const SLIDE = { duration: 700, easing: 'cubic-bezier(0.22, 0.61, 0.36, 1)' };
+  // Copies still sliding out, by card, with the direction they went.
+  const leaving = new Map();
 
   function slide(direction) {
-    const items = list.children;
-    const step = items[1].offsetLeft - items[0].offsetLeft;
+    const cards = [...list.children].filter((child) => !child.classList.contains('drinks__item--leaving'));
+    const card = direction === 'next' ? cards[0] : cards[cards.length - 1];
+    const step = cards[1].offsetLeft - cards[0].offsetLeft;
+    const exit = direction === 'next' ? -step : step;
 
+    // Measure before cancelling, so a card caught mid-slide carries on from where it is.
+    const from = new Map(cards.map((item) => [item, item.getBoundingClientRect().left]));
+    cards.forEach((item) => item.getAnimations().forEach((animation) => animation.cancel()));
+
+    const copy = card.cloneNode(true);
+    copy.classList.add('drinks__item--leaving');
+    copy.setAttribute('aria-hidden', 'true');
+    copy.inert = true;
+    copy.querySelector('img').loading = 'eager';
+    copy.style.left = `${card.offsetLeft}px`;
+    copy.style.top = `${card.offsetTop}px`;
+    copy.style.width = `${card.offsetWidth}px`;
+    const copyStart = from.get(card) - card.getBoundingClientRect().left;
+
+    // Clicked back while the card's copy is still on its way out: the card turns round there.
+    const previous = leaving.get(card);
+    const turnsRound = previous && previous.direction !== direction;
+    if (turnsRound) {
+      from.set(card, previous.copy.getBoundingClientRect().left);
+      previous.copy.remove();
+    }
+
+    // Scroll snapping would chase the card to the other end of the list and undo the slide.
+    list.classList.add('is-sliding');
     if (direction === 'next') {
-      list.append(items[0]);
+      list.append(card);
     } else {
-      list.prepend(items[items.length - 1]);
+      list.prepend(card);
     }
+    list.append(copy);
 
-    const offset = direction === 'next' ? step : -step;
-    for (const item of list.children) {
-      item.animate(
-        [{ transform: `translateX(${offset}px)` }, { transform: 'translateX(0)' }],
-        { duration: SLIDE_DURATION, easing: 'cubic-bezier(0.22, 0.61, 0.36, 1)' }
-      );
-    }
+    const animations = cards.map((item) => {
+      const offset = item === card && !turnsRound ? -exit : from.get(item) - item.getBoundingClientRect().left;
+      return item.animate([{ transform: `translateX(${offset}px)` }, { transform: 'none' }], SLIDE);
+    });
+
+    // `forwards` keeps the copy out of view until it is removed.
+    copy
+      .animate([{ transform: `translateX(${copyStart}px)` }, { transform: `translateX(${exit}px)` }], { ...SLIDE, fill: 'forwards' })
+      .finished.then(() => {
+        copy.remove();
+        if (leaving.get(card)?.copy === copy) leaving.delete(card);
+      });
+    leaving.set(card, { copy, direction });
+
+    // A newer slide cancels these animations and restores snapping once its own have finished.
+    Promise.all(animations.map((animation) => animation.finished)).then(
+      () => list.classList.remove('is-sliding'),
+      () => {}
+    );
   }
 
   buttons.forEach((button) => {

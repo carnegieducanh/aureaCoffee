@@ -23,6 +23,8 @@
 }
 
 .drinks__list {
+  // Positions the copy of the card that slides out (see main.js).
+  position: relative;
   display: flex;
   gap: 2rem;
   padding-block: 1rem;
@@ -33,12 +35,22 @@
   &::-webkit-scrollbar {
     display: none;
   }
+
+  // Set by main.js while the cards slide: snapping would chase the card it moves to the other end.
+  &.is-sliding {
+    scroll-snap-type: none;
+  }
 }
 
 .drinks__item {
   flex: 0 0 calc((100% - 4 * 2rem) / 5);
   min-width: 11rem;
   scroll-snap-align: start;
+}
+
+.drinks__item--leaving {
+  position: absolute;
+  scroll-snap-align: none;
 }
 
 .drinks__button {
