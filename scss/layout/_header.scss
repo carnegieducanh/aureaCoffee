@@ -11,8 +11,8 @@
     content: "";
     position: absolute;
     inset: 0;
-    background-color: rgba($color-bg, 0.88);
-    box-shadow: 0 1px 0 rgba($color-border, 0.7);
+    background-color: color-mix(in srgb, $color-bg 88%, transparent);
+    box-shadow: 0 1px 0 color-mix(in srgb, $color-border 70%, transparent);
     backdrop-filter: blur(12px);
     opacity: 0;
     transition: opacity 0.4s $ease-out;
@@ -36,6 +36,7 @@
   display: flex;
   flex: 1;
   align-items: center;
+  gap: 1rem;
 }
 
 .site-nav__list {
@@ -68,6 +69,31 @@
   &[aria-current]::after {
     transform: scaleX(1);
   }
+}
+
+.theme-toggle {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  background-color: color-mix(in srgb, $color-bg 90%, transparent);
+  box-shadow: 0 2px 12px rgba($espresso, 0.1);
+  transition: background-color $duration-fast $ease-out;
+
+  &:hover {
+    background-color: $color-bg-alt;
+  }
+}
+
+// Shows the theme the button switches to.
+.theme-toggle__sun,
+[data-theme="dark"] .theme-toggle__moon {
+  display: none;
+}
+
+[data-theme="dark"] .theme-toggle__sun {
+  display: block;
 }
 
 .menu-toggle {
@@ -106,8 +132,8 @@
     width: 2.75rem;
     height: 2.75rem;
     border-radius: 50%;
-    background-color: rgba($color-bg, 0.9);
-    box-shadow: 0 2px 12px rgba($color-text, 0.1);
+    background-color: color-mix(in srgb, $color-bg 90%, transparent);
+    box-shadow: 0 2px 12px rgba($espresso, 0.1);
   }
 
   .menu-toggle__icon,

@@ -1,14 +1,25 @@
-// Color system
-$color-bg: #faf3ea;
-$color-bg-alt: #f2e4d4;
-$color-surface: #faf3ea;
-$color-border: #ddc9b3;
-$color-text: #2b1b0d;
-$color-brown: #664c2d;
-$color-brown-dark: #513118;
+// Color system: brand palette, the same in both themes. Use it directly for text on photos,
+// colored cards and shadows.
+$cream: #faf3ea;
+$linen: #f2e4d4;
+$sand: #ddc9b3;
+$espresso: #2b1b0d;
+$walnut: #664c2d;
+$mahogany: #513118;
+$copper: #98562b;
+
+// Theme tokens: CSS custom properties from base/_theme.scss, switched by [data-theme].
+// Sass can't run rgba() on them: use color-mix() for a see-through variant.
+$color-bg: var(--color-bg);
+$color-bg-alt: var(--color-bg-alt);
+$color-surface: var(--color-surface);
+$color-border: var(--color-border);
+$color-text: var(--color-text);
+$color-brown: var(--color-brown);
+$color-brown-dark: var(--color-brown-dark);
 // Secondary text: solid brown keeps the thin strokes of Noto Serif JP readable at small sizes.
 $color-text-muted: $color-brown;
-$color-accent: #98562b;
+$color-accent: var(--color-accent);
 
 // Typography
 $font-display-ja: "Zen Old Mincho", "Noto Serif JP", serif;

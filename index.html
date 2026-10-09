@@ -13,6 +13,11 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat&family=Cormorant+Garamond:wght@500;600&family=Noto+Serif+JP:wght@400;500&family=Zen+Old+Mincho:wght@500&display=swap">
   <link rel="stylesheet" href="css/main.css">
 
+  <!-- Inline so the saved (or system) theme is set before the page paints. -->
+  <script>
+    document.documentElement.dataset.theme = localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  </script>
+
   <!-- Not deferred: it adds .sr to <html> before the body renders, so [data-reveal] content never flashes. -->
   <script src="js/vendor/scrollreveal.min.js"></script>
   <script src="js/main.js" defer></script>
@@ -43,6 +48,11 @@
           <li><a class="site-nav__link" href="#contact">お問い合わせ</a></li>
         </ul>
         <a class="button" href="#reservation">お席を予約する</a>
+        <button class="theme-toggle" type="button" aria-pressed="false">
+          <span class="visually-hidden">ダークモード</span>
+          <svg class="theme-toggle__moon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+          <svg class="theme-toggle__sun" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="4"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg>
+        </button>
       </nav>
     </div>
   </header>
@@ -157,7 +167,7 @@
               <figcaption>— MELISSA, DESIGNER</figcaption>
             </figure>
           </div>
-          <img class="story-card__image" src="assets/images/woman-sipping.webp" alt="窓辺の席でコーヒーを味わう女性" width="640" height="640" loading="lazy">
+          <img class="story-card__image" src="assets/images/latte-hands.webp" alt="窓辺の木のテーブルでカフェラテのカップに手を添える様子" width="640" height="640" loading="lazy">
         </article>
 
         <article class="story-card story-card--counter" data-reveal>
@@ -325,7 +335,7 @@
           </li>
           <li data-reveal>
             <article class="moment-card">
-              <img class="moment-card__image" src="assets/images/laptop-work.webp" alt="ノートパソコンを開いてくつろぐ女性" width="480" height="480" loading="lazy">
+              <img class="moment-card__image" src="assets/images/man-smiling.webp" alt="テーブルで笑顔を見せながらひと休みする男性" width="480" height="480" loading="lazy">
               <div class="moment-card__body">
                 <img class="moment-card__icon" src="assets/icons/laptop.webp" alt="" width="120" height="81" loading="lazy">
                 <h3 class="moment-card__title">仕事と、ひと休み</h3>
@@ -335,7 +345,7 @@
           </li>
           <li data-reveal>
             <article class="moment-card">
-              <img class="moment-card__image" src="assets/images/couple.webp" alt="ブランチを囲んで会話を楽しむ二人" width="480" height="480" loading="lazy">
+              <img class="moment-card__image" src="assets/images/friends-cafe.webp" alt="コーヒーと焼き菓子を囲んで会話を楽しむ女性たち" width="480" height="480" loading="lazy">
               <div class="moment-card__body">
                 <img class="moment-card__icon" src="assets/icons/conversation.webp" alt="" width="120" height="74" loading="lazy">
                 <h3 class="moment-card__title">ブランチと会話</h3>

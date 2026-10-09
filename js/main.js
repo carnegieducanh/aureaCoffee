@@ -39,6 +39,30 @@ function initMobileNav() {
   desktop.addEventListener('change', () => setOpen(false));
 }
 
+// The initial theme is set by the inline script in <head>; this only flips and saves it.
+function initThemeToggle() {
+  const toggle = document.querySelector('.theme-toggle');
+  const root = document.documentElement;
+  const isDark = () => root.dataset.theme === 'dark';
+
+  function switchTheme() {
+    root.dataset.theme = isDark() ? 'light' : 'dark';
+    toggle.setAttribute('aria-pressed', String(isDark()));
+    localStorage.setItem('theme', root.dataset.theme);
+  }
+
+  toggle.setAttribute('aria-pressed', String(isDark()));
+
+  // Crossfades the whole page into the new theme; browsers without View Transitions just switch.
+  toggle.addEventListener('click', () => {
+    if (document.startViewTransition) {
+      document.startViewTransition(switchTheme);
+    } else {
+      switchTheme();
+    }
+  });
+}
+
 // Rotates the list so the carousel loops, then slides the cards into their new slots.
 function initDrinksCarousel() {
   const list = document.getElementById('drinks-list');
@@ -123,6 +147,7 @@ function initActiveNavLink() {
 
 initHeader();
 initMobileNav();
+initThemeToggle();
 initDrinksCarousel();
 initScrollReveal();
 initActiveNavLink();

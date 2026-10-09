@@ -1,0 +1,43 @@
+@use "variables" as *;
+
+:root {
+  --color-bg: #{$cream};
+  --color-bg-alt: #{$linen};
+  --color-surface: #{$cream};
+  --color-border: #{$sand};
+  --color-text: #{$espresso};
+  --color-brown: #{$walnut};
+  --color-brown-dark: #{$mahogany};
+  --color-accent: #{$copper};
+}
+
+// Length of the crossfade when the theme is switched (initThemeToggle in js/main.js).
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.8s;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --color-bg: #1c130b;
+  --color-bg-alt: #251910;
+  --color-surface: #2c1f14;
+  --color-border: #4a3727;
+  --color-text: #{$linen};
+  --color-brown: #c4ad94;
+  --color-brown-dark: #{$sand};
+  --color-accent: #d4915f;
+
+  // The hero photo and the line icons were drawn for the cream background.
+  .hero__bg {
+    filter: brightness(0.4);
+  }
+
+  .brand__mark,
+  .story-card__icon,
+  .menu-card__icon,
+  .moment-card__icon {
+    filter: brightness(0) invert(1);
+    opacity: 0.75;
+  }
+}
