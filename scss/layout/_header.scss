@@ -4,6 +4,7 @@
   position: fixed;
   inset: 0 0 auto;
   z-index: 50;
+  padding-top: $safe-top;
 
   // Background lives on a pseudo-element: backdrop-filter on the header itself
   // would trap the fixed mobile menu inside the header box.

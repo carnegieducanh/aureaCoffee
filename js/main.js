@@ -43,11 +43,13 @@ function initMobileNav() {
 function initThemeToggle() {
   const toggle = document.querySelector('.theme-toggle');
   const root = document.documentElement;
+  const themeColor = document.querySelector('meta[name="theme-color"]');
   const isDark = () => root.dataset.theme === 'dark';
 
   function switchTheme() {
     root.dataset.theme = isDark() ? 'light' : 'dark';
     toggle.setAttribute('aria-pressed', String(isDark()));
+    themeColor.content = getComputedStyle(root).getPropertyValue('--color-bg').trim();
     localStorage.setItem('theme', root.dataset.theme);
   }
 

@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>CAFÉ AUREA | 一杯のコーヒーから、今日が少し好きになる。</title>
   <meta name="description" content="一杯のコーヒーから、今日が少し好きになる。Café Aureaのシグネチャードリンク、季節のペストリー、ブランチプレートを、心地よい空間で。">
   <meta name="theme-color" content="#faf3ea">
@@ -16,6 +16,8 @@
   <!-- Inline so the saved (or system) theme is set before the page paints. -->
   <script>
     document.documentElement.dataset.theme = localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    // Browser bar color (status bar on phones): the page background of the active theme.
+    document.querySelector('meta[name="theme-color"]').content = document.documentElement.dataset.theme === 'dark' ? '#1c130b' : '#faf3ea';
   </script>
 
   <!-- Not deferred: it adds .sr to <html> before the body renders, so [data-reveal] content never flashes. -->

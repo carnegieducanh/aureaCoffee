@@ -11,16 +11,28 @@
 }
 
 :root {
-  --gutter: clamp(1.25rem, 4vw, 3rem);
+  // Also clears the notch in landscape.
+  --gutter: max(clamp(1.25rem, 4vw, 3rem), env(safe-area-inset-left, 0px), env(safe-area-inset-right, 0px));
   // Distance from the container edge to the viewport edge, used for full-bleed images.
   --bleed: max(var(--gutter), (100vw - #{$container-width}) / 2);
 }
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: $header-height;
+  scroll-padding-top: calc(#{$header-height} + #{$safe-top});
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
+}
+
+// Touch screens scroll without a visible bar; it only takes width from the layout there.
+@media (max-width: $bp-tablet) {
+  html {
+    scrollbar-width: none;
+  }
+
+  html::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 body {

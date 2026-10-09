@@ -1,7 +1,7 @@
 @use "../base/variables" as *;
 
 .site-footer {
-  padding-block: 2.75rem 2rem;
+  padding-block: 2.75rem calc(2rem + #{$safe-bottom});
   background-color: $color-bg;
   font-size: 0.875rem;
 }

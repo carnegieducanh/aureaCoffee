@@ -30,6 +30,9 @@ $font-script: "Caveat", cursive;
 // Layout
 $container-width: 80rem;
 $header-height: 6.5rem;
+// Status bar / notch height when the page is drawn under it (viewport-fit=cover); 0 elsewhere.
+$safe-top: env(safe-area-inset-top, 0px);
+$safe-bottom: env(safe-area-inset-bottom, 0px);
 $radius-card: 1rem;
 $radius-pill: 999px;
 
